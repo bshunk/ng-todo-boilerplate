@@ -1,5 +1,10 @@
 "use strict";
 
+let todoApp = angular.module("TodoApp", ["ngRoute"])
+.constant("FirebaseUrl", "https://todo-app-19fec.firebaseio.com/");
+
+
+
 // $scope.items = [
 //   {
 //     id: 0,
@@ -32,3 +37,4 @@
 //     dependencies: "hammock, silence"
 //   }
 // ];
+ 	 

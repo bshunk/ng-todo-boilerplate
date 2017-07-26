@@ -6,8 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <!-- TODO: Initialize our app -->
-<body>
-  <p>This is temporary</p>
+<body ng-app="TodoApp">
   <!-- TODO: Add a nav controller -->
   <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -103,11 +102,28 @@
     </div>
   </div>
 
+  <!-- third party scripts: jquery, bootstrap, angular, angular-route, firebase -->
   <script type="text/javascript" src="lib/node_modules/jquery/dist/jquery.min.js"></script>
-  <script type="text/javascript" src="lib/node_modules/bootstrap/dist/js/bootstrap.min.js">
-  </script>
+  <script type="text/javascript" src="lib/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="lib/node_modules/angular/angular.min.js"></script>
   <script type="text/javascript" src="lib/node_modules/angular-route/angular-route.min.js"></script>
+  <script type="text/javascript" src="lib/node_modules/firebase/firebase.js"></script>
+  <!-- app files -->
   <script type="text/javascript" src="app/app.js"></script>
+  <!-- providers -->
+  <script type="text/javascript" src="app/values/fb-creds.js"></script>
+  <script type="text/javascript" src="app/factories/user-factory.js"></script>
+  <!-- controllers -->
+
+
+
 </body>
 </html>
+
+
+
+
+
+
+
+
