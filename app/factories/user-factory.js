@@ -1,6 +1,6 @@
 'use strict';
 
-todoApp.factory("user-factory", function($q, $http, FirebaseUrl, FBCreds) {
+todoApp.factory("UserFactory", function($q, $http, FirebaseUrl, FBCreds) {
 	
 	var config = {
 		apiKey: FBCreds.key,
