@@ -13,11 +13,13 @@ todoApp.config( ($routeProvider) => {
 		templateUrl: 'partials/todo-list.html',
 		controller: 'TodoListController'
 	})
+	.when('/todos/new', {
+		templateUrl: 'partials/todo-form.html',
+		controller: 'TodoAddController'
+	})
 	.otherwise('/');
 });
   
-
-
 // $scope.items = [
 //   {
 //     id: 0,
@@ -50,4 +52,3 @@ todoApp.config( ($routeProvider) => {
 //     dependencies: "hammock, silence"
 //   }
 // ];
- 	 

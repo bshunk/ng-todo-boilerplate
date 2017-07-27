@@ -14,10 +14,23 @@ todoApp.factory("TodoFactory", function($q, $http, FirebaseUrl) {
 		});
 	};
 	
+  let postNewItem = (newItem) => {
+    return $q( (resolve, reject) => {
+      $http.post(`${FirebaseUrl}todos.json`,
+        angular.toJson(newItem))
+      .then( (newItemData) => {
+        resolve(newItemData);
+      })
+      .catch ( (err) => {
+        reject(err);
+      });
+    });
+  };
+
 	let updateTodoStatus = (todo) => {
 		let itemId = todo.id;
 		// PUT the entire obj to FB
 	};
 
-	return { getTodoList };
+	return { getTodoList, postNewItem };
 });
