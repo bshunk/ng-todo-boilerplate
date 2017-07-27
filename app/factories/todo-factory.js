@@ -30,9 +30,44 @@ todoApp.factory("TodoFactory", function($q, $http, FirebaseUrl) {
   };
 
 	let updateTodoStatus = (todo) => {
-		let itemId = todo.id;
-		// PUT the entire obj to FB
+    return $q( (resolve, reject) => {
+		  let itemId = todo.id;
+		  // PUT the entire obj to FB 
+      if(itemId) {
+        $http.put(`${FirebaseUrl}todos/${itemId}.json`,
+          angular.toJson(todo))
+        .then( (data) => {
+          resolve(data);
+        })
+        .catch( (err) => {
+          reject(err);
+        });
+      } else {
+        console.log("I'm burnded out for the day. Go home");
+      }
+    });
 	};
 
-	return { getTodoList, postNewItem };
+  let deleteTodoItem = (todoId) => {
+    return $q( (resolve, reject) => {
+      if (todoId) {
+        $http.delete(`${FirebaseUrl}todos/${todoId}.json`)
+        .then( (data) => {
+          resolve(data);
+        })
+        .catch( (err) => {
+          reject(err);
+        });
+      }else {
+        console.log("No id passed in");
+      }
+    });
+  };
+
+	return { getTodoList, postNewItem, deleteTodoItem, updateTodoStatus };
 });
+
+
+
+
+
