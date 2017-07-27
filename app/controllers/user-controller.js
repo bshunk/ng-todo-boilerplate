@@ -1,6 +1,6 @@
 'use strict';
 
-todoApp.controller("UserController", function($scope, UserFactory) {
+todoApp.controller("UserController", function($scope, $window, UserFactory) {
 
 	$scope.account = {
 		email: "",
@@ -18,9 +18,12 @@ todoApp.controller("UserController", function($scope, UserFactory) {
 	};
 
 	$scope.login = () => {
-		
-	};
+    UserFactory.loginUser($scope.account)
+    .then( (userData) => {
+      $window.location.href = "#!/todo";
+    });
+  };
 
-
+  
 
 });
