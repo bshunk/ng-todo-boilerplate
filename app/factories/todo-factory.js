@@ -14,5 +14,10 @@ todoApp.factory("TodoFactory", function($q, $http, FirebaseUrl) {
 		});
 	};
 	
+	let updateTodoStatus = (todo) => {
+		let itemId = todo.id;
+		// PUT the entire obj to FB
+	};
+
 	return { getTodoList };
 });

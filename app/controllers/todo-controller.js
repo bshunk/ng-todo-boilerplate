@@ -6,10 +6,24 @@ todoApp.controller("TodoListController", function($scope, TodoFactory) {
 	TodoFactory.getTodoList()
 	.then( (todoList) => {
 		console.log("todo Data", todoList);
-		$scope.todos = todoList.data;
+		let todoData = todoList.data;
+		Object.keys(todoData).forEach( (key) => {
+			todoData[key].id = key;
+		});
+		$scope.todos = todoData;
 	})
 	.catch( (err) => {
 		console.log("error!");
 	});
+
+	$scope.deleteTask = (taskId) => {
+		console.log("delete called", taskId);
+	};
+
+	$scope.updateTaskStatus = () => {
+		console.log("status update");
+	};
+
+    
 
 });

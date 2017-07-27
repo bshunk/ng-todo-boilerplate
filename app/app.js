@@ -15,7 +15,7 @@ todoApp.config( ($routeProvider) => {
 	})
 	.otherwise('/');
 });
-
+  
 
 
 // $scope.items = [

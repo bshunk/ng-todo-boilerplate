@@ -15,11 +15,11 @@
   <div>
     <div class="panel panel-default" ng-repeat="todo in todos">
       <div class="panel-body">
-        <div class="col-xs-1"><input type="checkbox" name=""/></div>
+        <div class="col-xs-1"><input type="checkbox" ng-model="todo.isCompleted" ng-change="updateTaskStatus(todo)"/></div>
         <div class="col-xs-7 task">{{todo.task}}</div>
         <div class="col-xs-2 date">{{todo.dueDate}}</div>
         <div class="col-xs-1 assigned-to">{{todo.assignedTo}}</div>
-        <div class="col-xs-1 delete"><button class="btn btn-danger">X</button></div>
+        <div class="col-xs-1 delete"><button class="btn btn-danger" ng-click="deleteTask(todo.id)">X</button></div>
       </div>
     </div>
   </div>
