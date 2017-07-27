@@ -1,9 +1,11 @@
 'use strict';
 
 todoApp.factory("TodoFactory", function($q, $http, FirebaseUrl) {
-	let getTodoList = () => {
+
+	let getTodoList = (userId) => {
+    console.log("userId", userId);
 		return $q( (resolve, reject) => {
-			$http.get(`${FirebaseUrl}todos.json`)
+			$http.get(`${FirebaseUrl}todos.json?orderBy="uid"&equalTo="${userId}"`)
 			.then( (todoData) => {
 				resolve(todoData);
 			})

@@ -1,9 +1,12 @@
 'use strict';
 
-todoApp.controller("TodoListController", function($scope, TodoFactory) {
+todoApp.controller("TodoListController", function($scope, TodoFactory, UserFactory) {
 
+  let currentUser = UserFactory.getUser();
+  console.log("user?", currentUser);
+  
 	// for viewing all todo items, deleting an item, updating completed status
-	TodoFactory.getTodoList()
+	TodoFactory.getTodoList(UserFactory.getUser())
 	.then( (todoList) => {
 		console.log("todo Data", todoList);
 		let todoData = todoList.data;
