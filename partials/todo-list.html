@@ -13,13 +13,13 @@
   </div>
   <!-- TODO: Repeat over our todo list items and setup filtering by search term. Easy peasy -->
   <div>
-    <div class="panel panel-default">
+    <div class="panel panel-default" ng-repeat="todo in todos">
       <div class="panel-body">
         <div class="col-xs-1"><input type="checkbox" name=""/></div>
-        <div class="col-xs-7"></div>
-        <div class="col-xs-2"></div>
-        <div class="col-xs-1"></div>
-        <div class="col-xs-1"><button class="btn btn-danger">X</button></div>
+        <div class="col-xs-7 task">{{todo.task}}</div>
+        <div class="col-xs-2 date">{{todo.dueDate}}</div>
+        <div class="col-xs-1 assigned-to">{{todo.assignedTo}}</div>
+        <div class="col-xs-1 delete"><button class="btn btn-danger">X</button></div>
       </div>
     </div>
   </div>
