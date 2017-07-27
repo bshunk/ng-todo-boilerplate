@@ -9,9 +9,9 @@ todoApp.config( ($routeProvider) => {
 		templateUrl: 'partials/login.html',
 		controller: 'UserController'
 	})
-	.when('/todos', {
+	.when('/todos/view', {
 		templateUrl: 'partials/todo-list.html',
-		controller: 'todo-list-controller'
+		controller: 'TodoListController'
 	})
 	.otherwise('/');
 });

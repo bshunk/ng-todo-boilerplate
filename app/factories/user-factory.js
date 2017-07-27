@@ -7,13 +7,14 @@ todoApp.factory("UserFactory", function($q, $http, FirebaseUrl, FBCreds) {
 		authDomain: FBCreds.authDomain
 	};
 
-	firebase.intitializeApp(config);
+	firebase.initializeApp(config);
 
 	let currentUser = null;
 
 	firebase.auth().onAuthStateChanged( (user) => {
 		if(user) {
-			currentUser = user.currentUser.uid;
+			console.log("user", user);
+			currentUser = user.uid;
 		} else {
 			currentUser = null;
 		}
@@ -44,6 +45,13 @@ todoApp.factory("UserFactory", function($q, $http, FirebaseUrl, FBCreds) {
 		});
 	};
 
-	console.log("firebase", firebase);
+	console.log("firebase", firebase );
+
+	return {getUser, createUser, loginUser, logoutUser};
 });
+
+
+
+
+
 
