@@ -1,57 +1,68 @@
 'use strict';
 
 todoApp.factory("UserFactory", function($q, $http, FirebaseUrl, FBCreds) {
-	
-	var config = {
-		apiKey: FBCreds.key,
-		authDomain: FBCreds.authDomain
-	};
 
-	firebase.initializeApp(config);
+  var config = {
+    apiKey: FBCreds.key,
+    authDomain: FBCreds.authDomain
+  };
 
-	let currentUser = null;
+  firebase.initializeApp(config);
 
-	firebase.auth().onAuthStateChanged( (user) => {
-		if(user) {
-			console.log("user", user);
-			currentUser = user.uid;
-		} else {
-			currentUser = null;
-		}
-	});
+  let currentUser = null;
 
-	let getUser = () => {
-		return currentUser;
-	};
+  let isAuthenticated = function() {
+    console.log("isAuthenticated called");
+    return new Promise( (resolve, reject) => {
+      console.log("firing onAuthStateChanged");
+      firebase.auth().onAuthStateChanged(function(user) {
+        console.log("onAuthStateChanged finished");
+        if (user) {
+          console.log("user", user);
+          currentUser = user.uid;
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+      });
+    });
+  };
 
-	let createUser = (userObj) => {
-		return firebase.auth().createUserWithEmailAndPassword(userObj.email, userObj.password)
-		.catch( (err) => {
-			console.log("error in login", err.message);
-		});
-	};
+  let getUser = () => {
+    return currentUser;
+  };
 
-	let loginUser = (userObj) => {
-		return firebase.auth().signInWithEmailAndPassword(userObj.email, userObj.password)
-		.catch( (err) => {
-			console.log("error in login", err.message);
-		});
-	};
+  let createUser = (userObj) => {
+    return firebase.auth().createUserWithEmailAndPassword(userObj.email, userObj.password)
+    .catch( (err) => {
+      console.log("error creating user", err.message);
+    });
+  };
 
-	let logoutUser = () => {
-		return firebase.auth().signOut()
-		.catch( (err) => {
-			console.log("error loggin' out, man", err.message);
-		});
-	};
+  let loginUser = (userObj) => {
+    return $q( (resolve, reject) => {
+      firebase.auth().signInWithEmailAndPassword(userObj.email, userObj.password)
+      .then( (user) => {
+        // have to set the current user here because the controllers that call `getUser`
+        // ( todo-controller, for example) are loading before the `onAuthStateChanged`
+        // listener was kicking in and setting the user value
+        currentUser = user.uid;
+        resolve(user);
+      })
+      .catch( (err) => {
+        console.log("error loggin in", err.message);
+      });
+    });
+  };
 
-	console.log("firebase", firebase );
+  let logoutUser = () => {
+    return firebase.auth().signOut()
+    .catch( (err) => {
+      console.log("error loggin' out, man", err.message);
+    });
+  };
 
-	return {getUser, createUser, loginUser, logoutUser};
+  console.log("firebase", firebase );
+
+  return {isAuthenticated, getUser, createUser, loginUser, logoutUser};
 });
-
-
-
-
-
-

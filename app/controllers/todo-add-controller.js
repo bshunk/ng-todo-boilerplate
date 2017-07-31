@@ -2,6 +2,7 @@
 
 todoApp.controller("TodoAddController", function($scope, $window, TodoFactory, UserFactory) {
 
+  $scope.formTitle = "Add New Task";
   $scope.todoItem = {
     assignedTo: "",
     dependencies: "",
@@ -9,7 +10,7 @@ todoApp.controller("TodoAddController", function($scope, $window, TodoFactory, U
     isCompleted: false,
     location: "",
     task: "",
-    uregency: "",
+    urgency: "",
     uid: UserFactory.getUser()
   };
 
@@ -18,8 +19,6 @@ todoApp.controller("TodoAddController", function($scope, $window, TodoFactory, U
     .then( (data) => {
       console.log("new todo data", data);
       $window.location.href = '#!/todos/view';
-    });    
+    });
   };
-
 });
-

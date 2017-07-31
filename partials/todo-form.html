@@ -1,8 +1,7 @@
 <div class="col-xs-12">
-  <h1>New Todo</h1>
+  <h1>{{formTitle}}</h1>
   <div class="form-group">
     <label>Task Description</label>
-    <!-- TODO: Hook up this form to our JS for submitting -->
     <input type="text" class="form-control" placeholder="Some important task" ng-model="todoItem.task"/>
   </div>
   <div class="form-group">
@@ -25,6 +24,5 @@
     <label>Dependencies</label>
     <input type="text" class="form-control" placeholder="brush chipper, monkey chow, the one ring" ng-model="todoItem.dependencies"/>
   </div>
-  <!-- TODO: bind this button to a function -->
   <button class="btn btn-default" ng-click="saveTodoItem()">Submit</button>
 </div>
