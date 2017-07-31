@@ -11,7 +11,7 @@ todoApp.controller("TodoListController", function($scope, $window, TodoFactory, 
     fetchTodos();
   });
 
-  $scope.searchText = FilterFactory;
+  $scope.searchText = FilterFactory; 
 
   // for viewing all todo items, deleting an item, updating completed status
   function fetchTodos() {

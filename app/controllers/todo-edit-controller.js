@@ -21,5 +21,4 @@ todoApp.controller('TodoEditController', function($scope, $routeParams, $window,
     });
   };
 
-
 });
