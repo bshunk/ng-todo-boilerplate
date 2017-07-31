@@ -30,5 +30,3 @@ todoApp.controller("UserController", function($scope, $window, UserFactory) {
   //   console.log("logout clicked");
   //   UserFactory.logoutUser();
   // };
-
-});

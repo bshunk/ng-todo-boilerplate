@@ -48,5 +48,4 @@ todoApp.controller("TodoListController", function($scope, $window, TodoFactory, 
       console.log("Updated completed status");
     });
   };
-
 });

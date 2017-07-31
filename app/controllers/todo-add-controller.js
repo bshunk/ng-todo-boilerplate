@@ -21,5 +21,4 @@ todoApp.controller("TodoAddController", function($scope, $window, TodoFactory, U
       $window.location.href = '#!/todos/view';
     });
   };
-
 });

@@ -78,14 +78,3 @@ todoApp.factory("TodoFactory", function($q, $http, FirebaseUrl) {
 
   return { getTodoList, postNewItem, deleteTodoItem, updateTodoStatus, getSingleTodoItem };
 });
-
-
-
-
-
-
-
-
-
-
-
