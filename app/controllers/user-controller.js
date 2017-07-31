@@ -24,6 +24,8 @@ todoApp.controller("UserController", function($scope, $window, UserFactory) {
       $window.location.href = '#!/todos/view';
     });
   };
+  
+});
 
   // Moved to nav ctrl
   // $scope.logout = () => {
